@@ -1,0 +1,11 @@
+- @page_title = "Member: #{h @member.full_name}"
+
+%ul
+  %li
+    %strong Membership number:
+    =h @member.membership_number
+
+%p
+  = link_to 'Edit', edit_member_path(@member)
+  |
+  = link_to 'Back to members listing', members_path

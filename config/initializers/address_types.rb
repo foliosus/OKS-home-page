@@ -1,0 +1,1 @@
+ADDRESS_TYPES = %w(home work other)

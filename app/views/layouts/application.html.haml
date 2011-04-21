@@ -1,0 +1,165 @@
+!!! 1.1
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+
+    %title
+      = @page_title ||= "#{controller.controller_name} #{controller.action_name}"
+      | Oregon Ki Society
+
+    = tag(:meta, :'http-equiv' => 'description', :content => @page_description) if @page_description
+
+    = stylesheet_link_tag 'shoji'
+    = stylesheet_link_tag "formtastic"
+    = stylesheet_link_tag "formtastic_changes"
+
+  %body{:class => controller.controller_name}
+    #container
+      #wrapper
+        #header
+          %p
+            %a{:href => "/index.php", :title => "Return to the Oregon Ki Society homepage"} Oregon Ki Society (oregonki.org)
+        #primary_content
+          %h1= @page_title
+          = yield
+        #navigation
+          %ul
+            %li
+              %a{:href => "/about.html", :title => "Find out more about the Oregon Ki Society"} About the society
+              %ul
+                %li
+                  %a{:href => "/about.html", :title => "Find out more about the Oregon Ki Society"} About the OKS
+                %li
+                  %a{:href => "/instructors.html", :title => "Who leads the OKS?"} Instructors
+                %li
+                  %a{:href => "/fees.html", :title => "Training costs"} Fees
+                %li
+                  %a{:href => "/events.php", :title => "Upcoming events"} Events
+                %li
+                  %a{:href => "/books.html", :title => "Books about Ki and Aikido"} Books
+                %li
+                  %a{:href => "/links.html", :title => "Other Ki- and Aikido-related sites"} Links
+            %li
+              %a{:href => "/ki/index.html", :title => "Learn about Ki training"} Ki and Ki development
+              %ul
+                %li
+                  %a{:href => "/ki/index.html", :title => "Find out about Ki training"} Ki training
+                %li
+                  %a{:href => "/ki/what_is_ki.html", :title => "What is Ki?"} What is Ki?
+                %li
+                  %a{:href => "/ki/getting_started.html", :title => "How to get started with Ki training"} Getting started
+            %li
+              %a{:href => "/aikido/index.html", :title => "What is Aikido?"} Aikido
+              %ul
+                %li
+                  %a{:href => "/aikido/index.html", :title => "Find out about Aikido training"} Aikido training
+                %li
+                  %a{:href => "/aikido/getting_started.html", :title => ""} Getting started
+            %li
+              %a{:href => "/kiatsu/index.html", :title => "What is Kiatsu&reg;"} Kiatsu&reg;
+              %ul
+                %li
+                  %a{:href => "/kiatsu/index.html", :title => ""} Kiatsu: pressing with Ki
+                %li
+                  %a{:href => "/kiatsu/getting_started.html", :title => ""} Getting started
+                %li
+                  %a{:href => "/kiatsu/school.html", :title => "About the Personal Kiatsu School"} Personal Kiatsu School
+            %li
+              %a{:href => "/kids/index.html", :title => "Children's Aikido program"} Younger practitioners
+              %ul
+                %li
+                  %a{:href => "/kids/index.html", :title => "Aikido for the under-12 set"} Children's Aikido program
+                %li
+                  %a{:href => "/kids/getting_started.html", :title => "Getting started in the children's program"} Getting started
+                %li
+                  %a{:href => "/kids/dojo_etiquette.html", :title => "Basic guidelines and etiquette for the dojo and training"} Dojo etiquette
+            %li
+              %a{:href => "/locations/index.html", :title => "Our dojo locations, schedules and instructors"} Locations and schedules
+              %ul
+                %li
+                  %a{:href => "/locations/index.html", :title => "Our dojo locations, schedules and instructors"} Locations list
+                %li
+                  %a{:href => "/locations/tigard.php", :title => "OKS headquarters in SW Portland"} Headquarters: Tigard
+                %li
+                  %a{:href => "/locations/kiatsu.php", :title => "Personal Kiatsu School"} Personal Kiatsu School
+                %li
+                  %a{:href => "/locations/se_portland.php", :title => "Ki Aikido dojo in SE Portland"} SE Portland
+                %li
+                  %a{:href => "/locations/hillsboro.php", :title => "Ki Aikido dojo in Hillsboro"} Hillsboro
+                %li
+                  %a{:href => "/locations/reed_college.php", :title => "Ki Aikido dojo at Reed College in SE Portland"} Reed College, Portland
+                %li
+                  %a{:href => "/locations/salem.php", :title => "Ki Aikido dojo in Salem"} Salem
+                %li
+                  %a{:href => "/locations/corvallis.php", :title => "Ki Aikido dojo in Corvallis"} Corvallis
+                %li
+                  %a{:href => "/locations/eugene.php", :title => "Ki Aikido dojo in Eugene"} Eugene
+                %li
+                  %a{:href => "/locations/bend.php", :title => "Ki Aikido dojo in Bend"} Bend
+                %li
+                  %a{:href => "http://orangecountyki.org/", :title => "Ki Aikido dojo in Laguna Niguel, California"} Orange County Ki Society, California
+                %li
+                  %a{:href => "http://www.vks.ca/", :title => "Ki Aikido dojo in Vancouver, British Columbia"} Vancouver Ki Society, Canada
+                %li
+                  %a{:href => "http://www.calgarykisociety.com/", :title => "Ki Aikido dojo in Calgary, Alberta"} Calgary Ki Society, Canada
+                %li
+                  %a{:href => "http://www.kisociety.org.uk/", :title => "Ki Aikido dojos in Brighton, Loughborough, Bangor, Southampton and Romsey"} UK Ki Federation, United Kingdom
+            %li
+              %a{:href => "/getting_started.html", :title => "Find out how to start your training"} Getting started
+              %ul
+                %li
+                  %a{:href => "/getting_started.html", :title => "Find out how to start your training"} Getting started with the OKS
+                %li
+                  %a{:href => "/ki/getting_started.html", :title => "How to get started with Ki training"} Ki training
+                %li
+                  %a{:href => "/aikido/getting_started.html", :title => "How to get started with Aikido training"} Aikido
+                %li
+                  %a{:href => "/kids/getting_started.html", :title => "How to get started in the Children's program"} Children's program
+                %li
+                  %a{:href => "/kiatsu/getting_started.html", :title => "How to get started with Kiatsu training"} Kiatsu&reg;
+                %li
+                  %a{:href => "/fees.html", :title => "Find out how much training costs"} Fees and monthly dues
+            %li
+              %a{:href => "/photos/index.html", :title => "Photo galleries"} Photos
+              %ul
+                %li
+                  %a{:href => "/photos/index.html", :title => "Photo galleries"} Gallery list
+                %li
+                  %a{:href => "/photos/uk2007/index.html", :title => "Tabata sensei trip to the U.K., July 2007"} U.K. trip, July 2007
+                %li
+                  %a{:href => "/photos/fall_camp_2007/index.html", :title => "Northwest Ki Federation Fall Camp, November 2007"} Fall camp, November 2007
+                %li
+                  %a{:href => "/photos/corvallis_groundbreaking_2007/index.html", :title => "Groundbreaking for the new Corvallis dojo, December 2007"} Corvallis groundbreaking, December 2007
+                %li
+                  %a{:href => "/photos/shinsakai_2008/index.html", :title => "Yearly Shinsakai tournament, March 2008"} Shinsakai, March 2008
+                %li
+                  %a{:href => "/photos/corvallis_construction_2008/index.html", :title => "Construction of the new Corvallis dojo, Fall 2008"} Corvallis dojo construction, Fall 2008
+                %li
+                  %a{:href => "/photos/uk_2008/index.html", :title => "Tabata sensei trip to the U.K., August 2008"} U.K. trip, August 2008
+                %li
+                  %a{:href => "/photos/fall_camp_2008/index.html", :title => "Northwest Ki Federation Fall Camp, November 2008"} Fall camp, November 2008
+                %li
+                  %a{:href => "/photos/corvallis_grand_opening_2009/index.html", :title => "Corvallis dojo grand opening, June 2009"} Corvallis dojo grand opening, June 2009
+            %li
+              %a{:href => "/contact.php", :title => "Have any questions?"} Contact OKS
+        #secondary_content
+          = yield :secondary_content
+        #footer
+          %p
+            All content Copyright &copy; Oregon Ki Society.  For more information,
+            = succeed "." do
+              %a{:href => "/contact.php", :title => "Please send us your questions."} contact OKS
+          %p
+            Kiatsu&reg;, &quot;Shin Shin Toitsu Aikido&quot; and Tohei sensei's calligraphy of Ki are registered trademarks of
+            = succeed "." do
+              %a{:href => "http://www.ki-society.or.jp/", :title => "Ki Society HQ site (in Japanese)"} Ki Society HQ
+            Banner photo and others were taken at the
+            %a{:href => "http://www.japanesegarden.com/", :title => "Official site"} Portland Japanese Garden.
+            Site design by
+            = succeed "." do
+              %a{:href => "http://www.foliosus.com/", :title => "Visit Foliosus Web Design"} Foliosus Web Design LLC
+            %a{:href => "http://validator.w3.org/check/referer", :title => "Validate this site's XHTML"} XHTML
+            |
+            %a{:href => "http://jigsaw.w3.org/css-validator/check/referer", :title => "Validate this site's CSS"} CSS
+      / /wrapper
+    / /container
