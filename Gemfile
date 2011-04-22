@@ -40,5 +40,5 @@ group :test do
   gem 'autotest-growl'
   gem 'redgreen'
   gem 'shoulda'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
 end

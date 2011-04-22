@@ -1,10 +1,10 @@
 - @page_title = "Edit member #{@member.full_name}"
 
-- semantic_form_for @member do |f|
+= semantic_form_for @member do |f|
   
   = render :partial => 'form', :locals => {:f => f}
   
-  - f.buttons do
+  = f.buttons do
     = f.commit_button 'Save changes'
 
 %p

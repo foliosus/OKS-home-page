@@ -5,7 +5,8 @@ class CreateMembers < ActiveRecord::Migration
       t.string :middle_name, :limit => 40
       t.string :last_name, :limit => 40, :null => false
       t.string :membership_number, :limit => 10, :null => false
-
+      t.date  :birth_date
+      
       t.timestamps
     end
   end
