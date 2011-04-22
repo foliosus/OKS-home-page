@@ -3,3 +3,4 @@
   = f.input :middle_name
   = f.input :last_name
   = f.input :membership_number
+  = f.input :birth_date, :order => [:month, :day, :year], :start_year => 1940, :end_year => Date.today.year - 3

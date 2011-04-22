@@ -12,14 +12,37 @@ The following style may be *conditionally* included for improved support on olde
 form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 
 --------------------------------------------------------------------------------------------------*/
-form.formtastic fieldset { border-top: 1px solid #999; }
-  form.formtastic fieldset fieldset { border-top: none; }
-  form.formtastic fieldset.buttons { border-top: none; padding-left: 0; }
-form.formtastic legend { padding-right: 1em; font-size: 1.5em; }
-  form.formtastic fieldset fieldset legend { padding: 0; font-size: 1em; font-weight: bold; }
 
-form.formtastic li { position: relative; }
-form.formtastic abbr[title=required] { color: #900; position: absolute; left: -0.5em; font-size: 1.5em; top: 0.25em; }
+form.formtastic {
+  fieldset {
+    border-top: 1px solid #999;
+    padding-top: 1.5em;
+    &.buttons {
+      border-top: none;
+      padding-left: 0;
+      padding-top: 0;
+      li { padding-left: 25%; }
+    }
+    legend { padding-right: 1em; font-size: 1.5em; }
+    fieldset {
+      border-top: none;
+      padding-top: 0;
+      legend { padding: 0; font-size: 1em; font-weight: bold; }
+    }
+    & > ol {
+      & > li {
+        overflow: visible;
+        fieldset ol {
+          margin-left: 0 !important;
+        }
+      }
+    }
+  }
 
-form.formtastic .error label,
-form.formtastic .error legend { color: #900; }
+  li { position: relative; }
+  abbr[title=required] { color: #900; position: absolute; left: -0.5em; font-size: 1.5em; top: 0.25em; }
+  
+  .error {
+    label, legend { color: #900; }
+  }
+}
