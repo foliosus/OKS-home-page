@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110421055953) do
+ActiveRecord::Schema.define(:version => 20110422025439) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id",                                     :null => false
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(:version => 20110421055953) do
     t.string   "last_name",         :limit => 40, :null => false
     t.string   "membership_number", :limit => 10, :null => false
     t.date     "birth_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ranks", :force => true do |t|
+    t.integer  "number",                    :default => -10,          :null => false
+    t.string   "letter",      :limit => 1
+    t.string   "color",       :limit => 6,  :default => "white",      :null => false
+    t.string   "description", :limit => 20, :default => "white belt", :null => false
+    t.string   "type",        :limit => 20,                           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

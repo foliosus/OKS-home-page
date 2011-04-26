@@ -1,0 +1,10 @@
+- @page_title = "New #{@rank.type_name} rank"
+
+= semantic_form_for(@rank, :as => :rank, :url => ranks_path) do |f|
+  
+  = render :partial => "form", :locals => {:f => f}
+  
+  = f.buttons do
+    = f.commit_button 'Add new rank'
+
+%p= link_to 'Back to ranks list', ranks_path

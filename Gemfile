@@ -32,6 +32,8 @@ gem 'mysql2'
 
 gem 'formtastic', '1.2.3'
 gem 'haml', '3.0.25'
+gem 'aasm', '2.2.0'
+gem 'jquery-rails', '0.2.6'
 
 group :test do
   gem 'autotest'

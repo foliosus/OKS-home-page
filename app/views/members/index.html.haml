@@ -9,7 +9,7 @@
   %tbody
     - for member in @members do
       %tr{:class => cycle('odd', 'even')}
-        %td= link_to h(member.full_name(:last_first => true)), member_path(member)
+        %td= link_to member.full_name(:last_first => true), member_path(member)
         %td 
         %td= link_to 'edit', edit_member_path(member)
         %td= link_to 'destroy', member, :confirm => 'Are you sure?', :method => :delete

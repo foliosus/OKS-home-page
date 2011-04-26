@@ -1,0 +1,6 @@
+= f.inputs do
+  = f.input :type, :as => :hidden
+  = f.input :number, :as => :select, :collection => (-10..10).to_a.reverse - [0], :include_blank => false, :required => true
+  = f.input :letter, :as => :select, :collection => 'A'..'C', :include_blank => true, :required => false
+  = f.input :color, :as => :select, :collection => f.object.allowed_colors, :include_blank => false, :required => true
+  = f.input :description, :required => true

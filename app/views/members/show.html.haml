@@ -1,12 +1,12 @@
-- @page_title = "Member: #{h @member.full_name}"
+- @page_title = "Member: #{@member.full_name}"
 
 %ul
   %li
     %strong Birth date:
-    =h @member.birth_date.to_s(:long)
+    =@member.birth_date.to_s(:long)
   %li
     %strong Membership number:
-    =h @member.membership_number
+    =@member.membership_number
 
 %p
   = link_to 'Edit', edit_member_path(@member)

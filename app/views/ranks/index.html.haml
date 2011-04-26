@@ -1,0 +1,26 @@
+- @page_title = 'Ranks list'
+
+- for rank_type in Rank.descendants do
+  - rank_name = rank_type.to_s.sub('Rank', '').capitalize
+  - if @ranks[rank_type]
+    - reset_cycle
+    %h2
+      = rank_name
+      ranks
+    %table
+      %thead
+        %tr
+          %th Number
+          %th Color
+          %th Description
+          %th{:colspan => 2} Actions
+      %tbody
+        - for rank in @ranks[rank_type] do
+          %tr{:class => cycle('odd', 'even')}
+            %td= rank.number
+            %td= rank.color
+            %td= rank.description
+            %td= link_to 'edit', edit_rank_path(rank)
+            %td= link_to 'destroy', rank_path(rank), :confirm => 'Are you sure?', :method => :delete
+
+  %p= link_to "New #{rank_name} rank", new_rank_path(:rank => {:type => rank_type})

@@ -12,17 +12,7 @@ class EmailTest < ActiveSupport::TestCase
   should ensure_length_of(:email_type).is_at_most(5)
   should ensure_length_of(:address).is_at_most(80)
   
-  should "validate emails" do
-    e = Email.new(:address => 'a@b.com')
-    e.valid?
-    assert e.errors[:address].blank?, "Should accept a valid email (#{e.errors.inspect})"
-
-    e.address = 'a'
-    e.valid?
-    assert e.errors[:address].any?, "Should reject an invalid email (#{e.errors.inspect})"
-
-    e.address = nil
-    e.valid?
-    assert e.errors[:address].any?, "Should reject a nil email (#{e.errors.inspect})"
-  end
+  should allow_value('a@b.com').for(:address)
+  should_not allow_value('a').for(:address)
+  should_not allow_value(nil).for(:address)
 end
