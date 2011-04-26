@@ -8,10 +8,14 @@
       | Oregon Ki Society
 
     = tag(:meta, :'http-equiv' => 'description', :content => @page_description) if @page_description
+    
+    = javascript_include_tag :defaults
 
     = stylesheet_link_tag 'shoji'
     = stylesheet_link_tag "formtastic"
     = stylesheet_link_tag "formtastic_changes"
+    
+    = csrf_meta_tag
 
   %body{:class => controller.controller_name}
     #container
