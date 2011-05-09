@@ -24,6 +24,7 @@
           %p
             %a{:href => "/index.php", :title => "Return to the Oregon Ki Society homepage"} Oregon Ki Society (oregonki.org)
         #primary_content
+          = show_flash_messages
           %h1= @page_title
           = yield
         #navigation

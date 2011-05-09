@@ -100,11 +100,7 @@ blockquote, q {
 	display: inline; /* BUG FIX: prevent IE6 double-margin float bug */
 	width: 580px;
 	min-height: 10em;
-}
-
-#primary_content p, #primary_content ul, #primary_content ol, #primary_content table,
-#primary_content dl, #primary_content h1, #primary_content h2, #primary_content h3 {
-	margin-left: 20px;
+	& > * { margin-left: 20px; }
 }
 
 #primary_content address, #primary_content blockquote {
@@ -661,10 +657,24 @@ form strong {
   margin-left: 0;
 }
 
-p.notice {
+/* ================= */
+/* Flash messages    */
+/* ================= */
+
+#communication > div {
+  margin-top: 20px;
   border: 1px solid #900;
   background-color: #fff0f0;
   padding: 1.5em;
+  &.notice, &.info {
+    border-color: #090;
+    background-color: #f0fff0;
+  }
+  &.warning {
+    border-color: #990;
+    background-color: #fffff0;
+  }
+  & > :last-child { margin-bottom: 0; }
 }
 
 /* ================= */
