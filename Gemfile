@@ -35,6 +35,10 @@ gem 'haml', '3.0.25'
 gem 'aasm', '2.2.0'
 gem 'jquery-rails', '0.2.6'
 
+group :development do
+  gem 'mongrel'
+end
+
 group :test do
   gem 'autotest'
   gem 'autotest-rails-pure'
