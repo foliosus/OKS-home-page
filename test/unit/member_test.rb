@@ -9,6 +9,10 @@ class MemberTest < ActiveSupport::TestCase
   should have_many :telephones
   should have_many :emails
   
+  should have_many :exams
+  should have_many :ranks
+  should have_many :administered_exams
+  
   context "with a name" do
     setup do
       @member = Member.new(:first_name => 'John', :middle_name => 'Quincy', :last_name => 'Doe')

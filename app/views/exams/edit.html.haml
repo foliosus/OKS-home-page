@@ -1,0 +1,11 @@
+- @page_title = "Edit exam for #{@exam.member.full_name}"
+
+= semantic_form_for @exam do |f|
+  
+  = render :partial => 'form', :locals => {:f => f}
+  
+  = f.buttons do
+    = f.commit_button 'Save changes'
+
+%p
+  = link_to 'Back to exams listing', exams_path

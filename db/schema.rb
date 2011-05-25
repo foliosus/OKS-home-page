@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110422025439) do
+ActiveRecord::Schema.define(:version => 20110509045059) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id",                                     :null => false
@@ -35,6 +35,19 @@ ActiveRecord::Schema.define(:version => 20110422025439) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "exams", :force => true do |t|
+    t.integer  "member_id",   :null => false
+    t.integer  "rank_id",     :null => false
+    t.date     "the_date",    :null => false
+    t.integer  "examiner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "exams", ["examiner_id"], :name => "index_exams_on_examiner_id"
+  add_index "exams", ["member_id"], :name => "index_exams_on_member_id"
+  add_index "exams", ["rank_id"], :name => "index_exams_on_rank_id"
 
   create_table "members", :force => true do |t|
     t.string   "first_name",        :limit => 40, :null => false

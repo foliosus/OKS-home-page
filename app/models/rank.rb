@@ -1,4 +1,7 @@
 class Rank < ActiveRecord::Base
+  has_many :exams
+  has_many :members, :through => :exams
+  
   validates_presence_of   :number
   validates_presence_of   :color
   validates_length_of     :color, :maximum => 6

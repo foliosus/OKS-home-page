@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class RankTest < ActiveSupport::TestCase
+  should have_many :exams
+  should have_many :members
+  
   should validate_presence_of :number
   should validate_presence_of :color
   should validate_presence_of :description

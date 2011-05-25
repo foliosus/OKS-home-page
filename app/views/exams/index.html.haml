@@ -1,0 +1,21 @@
+- @page_title = 'Exam listing'
+
+%table
+  %thead
+    %tr
+      %th Member
+      %th Rank
+      %th Date
+      %th Examiner
+      %th Actions
+  
+  %tbody
+    - for exam in @exams do
+      %tr
+        %td= link_to(exam.member.full_name, member_path(exam.member_id), :title => "See the record for #{exam.member.full_name}")
+        %td= exam.rank.description
+        %td= exam.the_date
+        %td= exam.examiner.try(:full_name)
+        %td= link_to 'edit', edit_exam_path(exam)
+
+%p= link_to 'New exam', new_exam_path

@@ -1,6 +1,8 @@
 Oregonki::Application.routes.draw do
   resources :members
   resources :ranks, :except => :show
+  resources :exams, :except => :show
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

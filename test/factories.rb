@@ -11,3 +11,7 @@ Factory.define :rank do |r|
   r.color       'white'
   r.type        'AikidoRank'
 end
+
+Factory.define :exam do |e|
+  e.sequence(:the_date){|n| Date.today - 1000 + n }
+end

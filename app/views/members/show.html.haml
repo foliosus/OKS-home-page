@@ -1,5 +1,8 @@
 - @page_title = "Member: #{@member.full_name}"
 
+%p
+  = link_to 'New exam', new_exam_path(:member_id => @member)
+
 %ul
   %li
     %strong Birth date:
