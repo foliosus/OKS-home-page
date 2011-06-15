@@ -3,6 +3,7 @@
 = f.inputs do
   - if f.object.new_record?
     = f.input :member_id, :as => :hidden
-  = f.input :rank_id, :as => :select, :collection => Rank.all.collect{|r| [r.description, r.id]}
+  = f.input :ki_rank_id, :as => :select, :collection => KiRank.all.collect{|r| [r.description, r.id]}
+  = f.input :aikido_rank_id, :as => :select, :collection => AikidoRank.all.collect{|r| [r.description, r.id]}
   = f.input :examiner_id, :as => :select, :collection => members
-  = f.input :the_date
+  = f.input :the_date, :label => 'Date', :order => [:month, :day, :year], :default_value => Date.today

@@ -3,8 +3,8 @@ require 'test_helper'
 class ExamsControllerTest < ActionController::TestCase
   setup do
     @member = Factory.create :member
-    @rank = Factory.create :rank
-    @exam = Factory.create(:exam, :member => @member, :rank => @rank)
+    @rank = Factory.create :aikido_rank
+    @exam = Factory.create(:exam, :member => @member, :aikido_rank => @rank)
   end
 
   should "get index" do

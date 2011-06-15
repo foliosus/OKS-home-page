@@ -4,13 +4,17 @@
   %thead
     %tr
       %th Name
-      %th Rank
+      %th Aikido rank
+      %th Ki rank
       %th{:colspan => 2} Actions
   %tbody
     - for member in @members do
       %tr{:class => cycle('odd', 'even')}
         %td= link_to member.full_name(:last_first => true), member_path(member)
-        %td 
+        %td
+          =h member.aikido_rank.description.capitalize if member.aikido_rank
+        %td
+          =h member.ki_rank.description.capitalize if member.ki_rank
         %td= link_to 'edit', edit_member_path(member)
         %td= link_to 'destroy', member, :confirm => 'Are you sure?', :method => :delete
 

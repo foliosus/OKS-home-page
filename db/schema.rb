@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110509045059) do
+ActiveRecord::Schema.define(:version => 20110610030656) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id",                                     :null => false
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(:version => 20110509045059) do
     t.datetime "updated_at"
   end
 
+  create_table "aikido_ranks", :force => true do |t|
+    t.integer  "number",                    :default => -10,          :null => false
+    t.string   "letter",      :limit => 1
+    t.string   "color",       :limit => 6,  :default => "white",      :null => false
+    t.string   "description", :limit => 20, :default => "white belt", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "emails", :force => true do |t|
     t.integer  "emailable_id",                                     :null => false
     t.string   "emailable_type", :limit => 20,                     :null => false
@@ -37,17 +46,27 @@ ActiveRecord::Schema.define(:version => 20110509045059) do
   end
 
   create_table "exams", :force => true do |t|
-    t.integer  "member_id",   :null => false
-    t.integer  "rank_id",     :null => false
-    t.date     "the_date",    :null => false
+    t.integer  "member_id",      :null => false
+    t.date     "the_date",       :null => false
     t.integer  "examiner_id"
+    t.integer  "aikido_rank_id"
+    t.integer  "ki_rank_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "exams", ["aikido_rank_id"], :name => "index_exams_on_aikido_rank_id"
   add_index "exams", ["examiner_id"], :name => "index_exams_on_examiner_id"
+  add_index "exams", ["ki_rank_id"], :name => "index_exams_on_ki_rank_id"
   add_index "exams", ["member_id"], :name => "index_exams_on_member_id"
-  add_index "exams", ["rank_id"], :name => "index_exams_on_rank_id"
+
+  create_table "ki_ranks", :force => true do |t|
+    t.integer  "number",                    :default => -10,          :null => false
+    t.string   "color",       :limit => 6,  :default => "white",      :null => false
+    t.string   "description", :limit => 20, :default => "white belt", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "members", :force => true do |t|
     t.string   "first_name",        :limit => 40, :null => false
@@ -55,16 +74,6 @@ ActiveRecord::Schema.define(:version => 20110509045059) do
     t.string   "last_name",         :limit => 40, :null => false
     t.string   "membership_number", :limit => 10, :null => false
     t.date     "birth_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ranks", :force => true do |t|
-    t.integer  "number",                    :default => -10,          :null => false
-    t.string   "letter",      :limit => 1
-    t.string   "color",       :limit => 6,  :default => "white",      :null => false
-    t.string   "description", :limit => 20, :default => "white belt", :null => false
-    t.string   "type",        :limit => 20,                           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

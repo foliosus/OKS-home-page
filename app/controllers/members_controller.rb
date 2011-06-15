@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.xml
   def index
-    @members = Member.all
+    @members = Member.alphabetical_order.with_current_ranks.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.xml
   def show
-    @member = Member.find(params[:id])
+    @member = Member.with_all_exams.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

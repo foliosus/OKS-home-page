@@ -5,11 +5,17 @@ Factory.define :member do |m|
   m.sequence(:membership_number) {|n| "NWUSA #{n}"}
 end
 
-Factory.define :rank do |r|
+Factory.define :aikido_rank do |r|
   r.sequence(:number) {|n| -10 + n}
   r.sequence(:description) {|n| "rank #{n}"}
   r.color       'white'
-  r.type        'AikidoRank'
+  r.letter      'A'
+end
+
+Factory.define :ki_rank do |r|
+  r.sequence(:number) {|n| -10 + n}
+  r.sequence(:description) {|n| "rank #{n}"}
+  r.color       'white'
 end
 
 Factory.define :exam do |e|

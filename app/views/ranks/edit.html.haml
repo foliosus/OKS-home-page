@@ -1,6 +1,6 @@
 - @page_title = "Edit rank #{@rank.description}"
 
-= semantic_form_for @rank, :as => :rank, :url => rank_path(@rank) do |f|
+= semantic_form_for @rank, :as => :rank, :url => send("#{@rank_path}_path", @rank) do |f|
   
   = render :partial => 'form', :locals => {:f => f}
   
@@ -8,4 +8,4 @@
     = f.commit_button 'Save changes'
 
 %p
-  = link_to 'Back to ranks listing', ranks_path
+  = link_to 'Back to ranks listing', send("#{@rank_path}s_path")

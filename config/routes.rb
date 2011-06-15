@@ -1,6 +1,9 @@
 Oregonki::Application.routes.draw do
+  root :to => 'members#index'
+  
   resources :members
-  resources :ranks, :except => :show
+  resources :ki_ranks, :except => :show, :controller => 'ranks', :type => 'KiRank'
+  resources :aikido_ranks, :except => :show, :controller => 'ranks', :type => 'AikidoRank'
   resources :exams, :except => :show
 
 

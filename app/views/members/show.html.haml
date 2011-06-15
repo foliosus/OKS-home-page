@@ -11,6 +11,28 @@
     %strong Membership number:
     =@member.membership_number
 
+%h2 Ki exam history
+- if @member.ki_exams.any?
+  %ul
+    - for exam in @member.ki_exams do
+      %li
+        Tested for #{exam.ki_rank.description} on #{exam.the_date}
+        - if exam.examiner
+          (#{examiner.full_name})
+- else
+  %p #{@member.first_name} hasn't taken any ki exams
+
+%h2 Aikido exam history
+- if @member.aikido_exams.any?
+  %ul
+    - for exam in @member.aikido_exams do
+      %li
+        Tested for #{exam.aikido_rank.description} on #{exam.the_date}
+        -if exam.examiner
+          (#{examiner.full_name})
+- else
+  %p #{@member.first_name} hasn't taken any aikido exams
+
 %p
   = link_to 'Edit', edit_member_path(@member)
   |

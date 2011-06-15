@@ -1,8 +1,10 @@
 class RanksController < ApplicationController
+  before_filter :determine_rank_class
+  
   # GET /ranks
   # GET /ranks.xml
   def index
-    @ranks = Rank.rank_order.all.group_by(&:type)
+    @ranks = @rank_class.rank_order.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,7 @@ class RanksController < ApplicationController
   # GET /ranks/new
   # GET /ranks/new.xml
   def new
-    initialize_rank
+    @rank = @rank_class.new(params[:rank])
     
     respond_to do |format|
       format.html # new.html.erb
@@ -23,17 +25,17 @@ class RanksController < ApplicationController
 
   # GET /ranks/1/edit
   def edit
-    @rank = Rank.find(params[:id])
+    @rank = @rank_class.find(params[:id])
   end
 
   # POST /ranks
   # POST /ranks.xml
   def create
-    initialize_rank
+    @rank = @rank_class.new(params[:rank])
 
     respond_to do |format|
       if @rank.save
-        format.html { redirect_to(ranks_path, :notice => 'Rank was successfully created.') }
+        format.html { redirect_to(send("#{@rank_path}s_path"), :notice => 'Rank was successfully created.') }
         format.xml  { render :xml => @rank, :status => :created, :location => @rank }
       else
         format.html { render :action => "new" }
@@ -45,11 +47,11 @@ class RanksController < ApplicationController
   # PUT /ranks/1
   # PUT /ranks/1.xml
   def update
-    @rank = Rank.find(params[:id])
+    @rank = @rank_class.find(params[:id])
 
     respond_to do |format|
       if @rank.update_attributes(params[:rank])
-        format.html { redirect_to(ranks_path, :notice => 'Rank was successfully updated.') }
+        format.html { redirect_to(send("#{@rank_path}s_path"), :notice => 'Rank was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -61,24 +63,25 @@ class RanksController < ApplicationController
   # DELETE /ranks/1
   # DELETE /ranks/1.xml
   def destroy
-    @rank = Rank.find(params[:id])
+    @rank = @rank_class.find(params[:id])
     @rank.destroy
     flash[:info] = "Rank has been destroyed"
 
     respond_to do |format|
-      format.html { redirect_to(ranks_url) }
+      format.html { redirect_to(send("#{@rank_path}s_url")) }
       format.xml  { head :ok }
     end
   end
   
   private
   
-  def initialize_rank
-    type = params[:rank].try(:delete, :type)
-    @rank = case type
-      when 'KiRank' then KiRank
-      when 'AikidoRank' then AikidoRank
-      else Rank
-    end.new(params[:rank])
+  def determine_rank_class
+    @rank_class = if params[:type] == 'AikidoRank'
+      AikidoRank
+    else
+      KiRank
+    end
+    @rank_path = @rank_class.to_s.underscore
+    @rank_label = @rank_path.split('_').first.capitalize
   end
 end
